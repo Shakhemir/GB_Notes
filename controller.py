@@ -51,9 +51,10 @@ def edit_note():
     global notes_list
     ui.show_notes(notes_list)
     note_number = ui.safe_digit_input('Введите номер заметки для редактирования: ', len(notes_list)) - 1
-    new_note = ui.prompt_note()
-    notes_list[note_number] = new_note
-    json_io.write_json(notes_list)
+    if note_number != -1:
+        new_note = ui.prompt_note()
+        notes_list[note_number] = new_note
+        json_io.write_json(notes_list)
 
 
 def del_note():
